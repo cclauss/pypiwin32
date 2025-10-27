@@ -116,7 +116,7 @@ if not "." in build_id_patch:
     build_id_patch = build_id_patch + ".0"
 pywin32_version = "%d.%d.%s" % (sys.version_info[0], sys.version_info[1],
                                 build_id_patch)
-print(("Building pywin32", pywin32_version))
+print("Building pywin32", pywin32_version)
 
 try:
     this_file = __file__
@@ -430,7 +430,7 @@ class my_build(build):
             f.write("%s\n" % build_id)
             f.close()
         except EnvironmentError as why:
-            print(("Failed to open '%s': %s" % (ver_fname, why)))
+            print("Failed to open '%s': %s" % (ver_fname, why))
 
 
 class build_scintilla(Command):
@@ -646,7 +646,7 @@ class my_build_ext(build_ext):
                 for f in mfc_files:
                     self.copy_file(os.path.join(mfc_dir, f), target_dir)
         except (EnvironmentError, RuntimeError) as exc:
-            print(("Can't find an installed VC for the MFC DLLs:", exc))
+            print("Can't find an installed VC for the MFC DLLs:", exc)
 
     def get_ext_filename(self, name):
         # The pywintypes and pythoncom extensions have special names
@@ -775,7 +775,7 @@ class my_install_data(install_data):
         if self.install_dir is None:
             installobj = self.distribution.get_command_obj('install')
             self.install_dir = installobj.install_lib
-        print(('Installing data files to %s' % self.install_dir))
+        print('Installing data files to %s' % self.install_dir)
         install_data.finalize_options(self)
 
         # TODO: Find out why these files exist
